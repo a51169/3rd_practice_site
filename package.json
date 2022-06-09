@@ -1,0 +1,14 @@
+{
+  "name": "69dbae6b31205377",
+  "main": "69dbae6b31205377@2645.js",
+  "version": "2645.0.0",
+  "homepage": "https://observablehq.com/d/69dbae6b31205377",
+  "author": {
+    "name": "Jose Manuel dos Santos Sotero Cordeiro",
+    "url": "https://observablehq.com/@2008ecd4bdb60036"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

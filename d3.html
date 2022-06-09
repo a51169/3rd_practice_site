@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3</title>
+    <title>D3 Airbnb Lisboa</title>
     <link rel="stylesheet" href="styling.css">
-    
-    <!-- Connecting with D3.library -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://d3js.org/topojson.v3.min.js"></script>
-    
-
+      
 </head>
 <body>
     <div class="topnav">
@@ -23,12 +18,17 @@
         <a class="active" href="d3.html">D3</a>
       </div>
 
-      <script src="practice_3.js"></script>
+      <script type="module">
+
+        import define from "./practice_3.js";
+        import {Runtime, Library, Inspector} from "./runtime.js";
+        
+        const runtime = new Runtime();
+        const main = runtime.module(define, Inspector.into(document.body));
+        
+        </script>
 
 
-<footer>
-    <p> José Sotero Cordeiro | 3rd Practice | Viz tools</p>
-</footer>
 
 </body>
 </html>
