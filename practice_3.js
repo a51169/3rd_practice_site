@@ -1,10 +1,10 @@
 function _1(md){return(
-    md`# PORTUGAL BASEMAP`
+    md``
     )}
     
     function _map(d3,width,topojson,n2jrg,lisboa_raw,o,r)
     {
-      const svg = d3.create("svg").attr("viewBox", [0, 0, width, 500]);
+      const svg = d3.create("svg").attr("viewBox", [1, 1, width, 500]);
     
       /*The European projection https://spatialreference.org/ref/epsg/3035/ is used:*/
       //Defining the projection: you can change the scale and translate to zoom out or zoom more in Portugal
@@ -12,7 +12,7 @@ function _1(md){return(
         .geoAzimuthalEqualArea()
         .rotate([0, -52])
         .scale(27000)
-        .translate([3700, -5700]);
+        .translate([3950, -5700]);
     
       //country boundaries
       svg
@@ -24,7 +24,8 @@ function _1(md){return(
         .attr("d", d3.geoPath().projection(projection))
         .attr("fill", "none")
         .attr("stroke", "#6ab78d")
-        .attr("stroke-width", 2);
+        .attr("stroke-width", 2)
+        .attr("stroke-opacity", 0.4);
     
        //Airbnbs
       svg
@@ -50,24 +51,24 @@ function _1(md){return(
         .selectAll("rect")
         .data(lisboa_raw)
         .join("rect")
-        .filter((d) => d.price > 7000)
+        .filter((d) => d.price > 9000)
         .style("dominant-baseline", "ideographic")
         .attr("width", 0)
-        .attr("height", 15)
+        .attr("height", 20)
         .attr("fill", "#f1f1f1")
         .attr("x", (d) => projection([d.longitude, d.latitude])[0])
-        .attr("y", (d) => projection([d.longitude, d.latitude])[1] - 14)
+        .attr("y", (d) => projection([d.longitude, d.latitude])[1] - 18)
         .transition()
         .delay(4500)
         .duration(1000)
-        .attr("width", 400);
+        .attr("width", 200);
     
       //Airbnbs
       svg
         .selectAll("circle")
         .data(lisboa_raw)
         .join("circle")
-        .filter((d) => d.price > 7000)
+        .filter((d) => d.price > 9000)
         .attr("cx", (d) => projection([d.longitude, d.latitude])[0])
         .attr("cy", (d) => projection([d.longitude, d.latitude])[1])
         .attr("r", 0)
@@ -86,7 +87,7 @@ function _1(md){return(
         .selectAll("text")
         .data(lisboa_raw)
         .join("text")
-        .filter((d) => d.price > 7000)
+        .filter((d) => d.price > 9000)
         .style("dominant-baseline", "ideographic")
         .attr("opacity", 0)
         .attr("x", (d) => projection([d.longitude, d.latitude])[0] + 10)
@@ -100,15 +101,15 @@ function _1(md){return(
     
       svg
         .append("g")
-        .attr("transform", `translate(185, 34)`)
+        .attr("transform", `translate(270, 34)`)
         .append("text")
         .style("text-anchor", "end")
         .attr("class", "text")
-        .text("higher than 7000€ per night");
+        .text("Higher than 9.000€ per night");
     
       svg
         .append("g")
-        .attr("transform", `translate(10, 30)`)
+        .attr("transform", `translate(50, 30)`)
         .append("circle")
         .attr("fill-opacity", 1)
         .attr("stroke-opacity", 1)
@@ -218,8 +219,8 @@ function _1(md){return(
     require("topojson-client")
     )}
     
-    // function _21(htl){return(
-    // htl.html`<style>
+    function _21(htl){return(
+    htl.html`<style>
     
     // body {
     //   font-family: Arial;
@@ -290,23 +291,23 @@ function _1(md){return(
     
     // /*Defining chart stylings*/
     
-    // .text {
-    //         text-align: start;
-    //         text-anchor: center;
-    //         alignment-baseline: end;
-    //         fill: #04635b;
-    //         font-size: 7pt;
-    //         font-weight:600;
-    //         letter-spacing: 1px;
-    //       }
+    .text {
+            text-align: start;
+            text-anchor: center;
+            alignment-baseline: end;
+            fill: #04635b;
+            font-size: 7pt;
+            font-weight:600;
+            letter-spacing: 2px;
+          }
     
-    // rect {
-    //         fill: #f1f1f1;
-    //         opacity: 0.5;
-    //       }
+    rect {
+            fill: #f1f1f1;
+            opacity: 0.5;
+          }
     
-    // </style>`
-    // )}
+    </style>`
+    )}
     
     export default function define(runtime, observer) {
       const main = runtime.module();
